@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Small Events</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Small Events</h1>
+
+        <label>Event Category</label>
+        <select id="category">
+            <option>Seminar</option>
+            <option>Workshop</option>
+            <option>Hackathon</option>
+            <option>Technical Event</option>
+            <option>Awareness Program</option>
+            <option>Cultural Event</option>
+            <option>Sports Event</option>
+            <option>Blood Donation Camp</option>
+            <option>Tree Plantation</option>
+            <option>Community Service</option>
+        </select>
+
+        <label>Date</label>
+        <input type="date" id="date">
+
+        <label>Time</label>
+        <input type="time" id="time">
+
+        <label>Venue</label>
+        <input type="text" id="venue" placeholder="Enter Venue">
+
+        <label>Description</label>
+        <textarea id="description" rows="4" placeholder="Enter Event Description"></textarea>
+
+        <label>Things to Bring</label>
+        <textarea id="things" rows="3" placeholder="Laptop, Notebook, ID Card..."></textarea>
+
+        <h2>Organizer Details</h2>
+
+        <label>Organizer Name</label>
+        <input type="text" id="organizer" placeholder="Enter Organizer Name">
+
+        <label>Phone Number</label>
+        <input type="text" id="phone" placeholder="Enter Phone Number">
+
+        <label>Email ID</label>
+        <input type="email" id="email" placeholder="Enter Email ID">
+
+        <button onclick="saveEvent()">Submit</button>
+
+    </div>
+
+    <script>
+
+        function saveEvent() {
+
+            let event = {
+
+                category: document.getElementById("category").value,
+
+                date: document.getElementById("date").value,
+
+                time: document.getElementById("time").value,
+
+                venue: document.getElementById("venue").value,
+
+                description: document.getElementById("description").value,
+
+                things: document.getElementById("things").value,
+
+                organizer: document.getElementById("organizer").value,
+
+                phone: document.getElementById("phone").value,
+
+                email: document.getElementById("email").value
+
+            };
+
+            // Get old events
+            let events = JSON.parse(localStorage.getItem("events")) || [];
+
+            // Add new event
+            events.push(event);
+
+            // Save again
+            localStorage.setItem("events", JSON.stringify(events));
+
+            // Go to Help Page
+            window.location.href = "help.html";
+
+        }
+
+    </script>
+
+</body>
+
+</html>

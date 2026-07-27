@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Notice Board</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Community Notice Board</h1>
+        <h2>Student Login</h2>
+
+        <label>Student Name</label>
+        <input type="text" id="studentName" placeholder="Enter your name">
+
+        <label>Department</label>
+        <input type="text" id="department" placeholder="Enter your department">
+
+        <button onclick="login()">Submit</button>
+
+    </div>
+
+    <script>
+
+        function login() {
+
+            let name = document.getElementById("studentName").value;
+            let dept = document.getElementById("department").value;
+
+            if (name == "" || dept == "") {
+                alert("Please fill all details.");
+                return;
+            }
+
+            localStorage.setItem("studentName", name);
+            localStorage.setItem("department", dept);
+
+            window.location.href = "event.html";
+
+        }
+
+    </script>
+
+</body>
+
+</html>

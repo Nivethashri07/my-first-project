@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Needed</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Help Needed</h1>
+
+        <label>Student Name</label>
+        <input type="text" id="studentName" placeholder="Enter your name">
+
+        <label>Help Category</label>
+        <select id="helpCategory">
+            <option>Programming</option>
+            <option>Studies</option>
+            <option>Skills Development</option>
+            <option>Career Guidance</option>
+            <option>Personal Guidance</option>
+            <option>Communication Skills</option>
+            <option>Project Guidance</option>
+            <option>Other</option>
+        </select>
+
+        <label>Describe the Help Needed</label>
+        <textarea id="helpDescription" rows="6" placeholder="Describe your problem here..."></textarea>
+
+        <br><br>
+
+        <button onclick="saveHelp()">Submit</button>
+
+    </div>
+
+</body>
+
+</html>

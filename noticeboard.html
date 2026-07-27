@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Notice Board</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+            color: #1d3f91;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table th,
+        table td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+
+        table th {
+            background: #1d3f91;
+            color: white;
+        }
+
+        button {
+            background: #1d3f91;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #15306d;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Community Notice Board</h1>
+
+        <table>
+
+            <tr>
+                <th>Organizer</th>
+                <th>Category</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Venue</th>
+                <th>Description</th>
+                <th>Action</th>
+            </tr>
+
+            <tbody id="noticeTable"></tbody>
+
+        </table>
+
+    </div>
+
+    <script>
+
+        let events = JSON.parse(localStorage.getItem("events")) || [];
+
+        let table = document.getElementById("noticeTable");
+
+        function displayEvents() {
+
+            table.innerHTML = "";
+
+            events.forEach((event, index) => {
+
+                table.innerHTML += `
+<tr>
+
+<td>${event.organizer}</td>
+
+<td>${event.category}</td>
+
+<td>${event.date}</td>
+
+<td>${event.time}</td>
+
+<td>${event.venue}</td>
+
+<td>${event.description}</td>
+
+<td>
+
+<button onclick="editEvent(${index})">Edit</button>
+
+</td>
+
+</tr>
+
+`;
+
+            });
+
+        }
+
+        function editEvent(index) {
+
+            let newOrganizer = prompt("Enter Organizer Name", events[index].organizer);
+
+            if (newOrganizer != null) {
+
+                events[index].organizer = newOrganizer;
+
+                localStorage.setItem("events", JSON.stringify(events));
+
+                displayEvents();
+
+            }
+
+        }
+
+        displayEvents();
+
+    </script>
+
+</body>
+
+</html>
